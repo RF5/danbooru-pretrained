@@ -54,9 +54,9 @@ def create_head(top_n_tags, nf, ps=0.5):
     
     return nn.Sequential(*layers)
 
-def _resnet(base_arch, top_n=100):
+def _resnet(base_arch, top_n, **kwargs):
     cut = -2
-    s = base_arch(pretrained=False)
+    s = base_arch(pretrained=False, **kwargs)
     body = nn.Sequential(*list(s.children())[:cut])
 
     if base_arch in [models.resnet18, models.resnet34]:
@@ -73,14 +73,16 @@ def _resnet(base_arch, top_n=100):
     return model
 
 def resnet18(pretrained=True, progress=True, top_n=100, **kwargs):
-    """ 
+    r""" 
     Resnet18 model trained on the Danbooru2018 dataset tags
-    pretrained (bool): kwargs, load pretrained weights into the model
-    top_n (int): kwargs, pick to load the model for predicting the top `n` tags. 
-        currently only supports top_n=100.
+
+    Args:
+        pretrained (bool): kwargs, load pretrained weights into the model
+        top_n (int): kwargs, pick to load the model for predicting the top `n` tags. 
+            currently only supports top_n=100.
     """
     
-    model = _resnet(models.resnet18, top_n)
+    model = _resnet(models.resnet18, top_n, **kwargs)
     if pretrained:
         if top_n == 100: 
             #state = torch.hub.load_state_dict_from_url("GITHUB RELEASE URL!!!!", 
@@ -94,14 +96,16 @@ def resnet18(pretrained=True, progress=True, top_n=100, **kwargs):
     return model
 
 def resnet34(pretrained=True, progress=True, top_n=500, **kwargs):
-    """ 
+    r""" 
     Resnet34 model trained on the Danbooru2018 dataset tags
-    pretrained (bool): kwargs, load pretrained weights into the model
-    top_n (int): kwargs, pick to load the model for predicting the top `n` tags. 
-        currently only supports top_n=500.
+
+    Args:
+        pretrained (bool): kwargs, load pretrained weights into the model
+        top_n (int): kwargs, pick to load the model for predicting the top `n` tags,
+            currently only supports top_n=500.
     """
     
-    model = _resnet(models.resnet34, top_n)
+    model = _resnet(models.resnet34, top_n, **kwargs)
     if pretrained:
         if top_n == 500: 
             #state = torch.hub.load_state_dict_from_url("GITHUB RELEASE URL!!!!", 
@@ -115,14 +119,15 @@ def resnet34(pretrained=True, progress=True, top_n=500, **kwargs):
     return model
 
 def resnet50(pretrained=True, progress=True, top_n=6000, **kwargs):
-    """ 
+    r""" 
     Resnet50 model trained on the full Danbooru2018 dataset's top 6000 tags
-    pretrained (bool): kwargs, load pretrained weights into the model
-    top_n (int): kwargs, pick to load the model for predicting the top `n` tags. 
-        currently only supports top_n=6000.
-    """
 
-    model = _resnet(models.resnet50, top_n)
+    Args:
+        pretrained (bool): kwargs, load pretrained weights into the model.
+        top_n (int): kwargs, pick to load the model for predicting the top `n` tags,
+            currently only supports top_n=6000.
+    """
+    model = _resnet(models.resnet50, top_n, **kwargs)
     if pretrained:
         if top_n == 6000: 
             #state = torch.hub.load_state_dict_from_url("GITHUB RELEASE URL!!!!", 
