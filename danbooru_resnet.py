@@ -76,7 +76,8 @@ def resnet18(pretrained=True, progress=True, top_n=100, **kwargs):
     """ 
     Resnet18 model trained on the Danbooru2018 dataset tags
     pretrained (bool): kwargs, load pretrained weights into the model
-    top_n (int): kwargs, whether to load the model for predicting the top 100 or top 500 tags
+    top_n (int): kwargs, pick to load the model for predicting the top `n` tags. 
+        currently only supports top_n=100.
     """
     
     model = _resnet(models.resnet18, top_n)
@@ -86,6 +87,9 @@ def resnet18(pretrained=True, progress=True, top_n=100, **kwargs):
             #                                        progress=progress)
             state = torch.load('weights/resnet18.pth')
             model.load_state_dict(state)
+        else:
+            raise ValueError("Sorry, the resnet18 model only supports the top-100 tags \
+                at the moment")
     
     return model
 
@@ -93,7 +97,8 @@ def resnet34(pretrained=True, progress=True, top_n=500, **kwargs):
     """ 
     Resnet34 model trained on the Danbooru2018 dataset tags
     pretrained (bool): kwargs, load pretrained weights into the model
-    top_n (int): kwargs, whether to load the model for predicting the top 100 or top 500 tags
+    top_n (int): kwargs, pick to load the model for predicting the top `n` tags. 
+        currently only supports top_n=500.
     """
     
     model = _resnet(models.resnet34, top_n)
@@ -103,5 +108,30 @@ def resnet34(pretrained=True, progress=True, top_n=500, **kwargs):
             #                                        progress=progress)
             state = torch.load('weights/resnet34.pth')
             model.load_state_dict(state)
+        else:
+            raise ValueError("Sorry, the resnet34 model only supports the top-500 tags \
+                at the moment")
+    
+    return model
+
+def resnet50(pretrained=True, progress=True, top_n=6000, **kwargs):
+    """ 
+    Resnet50 model trained on the full Danbooru2018 dataset's top 6000 tags
+    pretrained (bool): kwargs, load pretrained weights into the model
+    top_n (int): kwargs, pick to load the model for predicting the top `n` tags. 
+        currently only supports top_n=6000.
+    """
+
+    model = _resnet(models.resnet50, top_n)
+    if pretrained:
+        if top_n == 6000: 
+            #state = torch.hub.load_state_dict_from_url("GITHUB RELEASE URL!!!!", 
+            #                                        progress=progress)
+            state = torch.load('weights/resnet50.pth')
+            model.load_state_dict(state)
+        else:
+            raise ValueError("Sorry, the resnet50 model only supports the top-6000 tags \
+                at the moment")
+
     
     return model
