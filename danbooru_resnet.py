@@ -85,7 +85,7 @@ def resnet18(pretrained=True, progress=True, top_n=100, **kwargs):
     model = _resnet(models.resnet18, top_n, **kwargs)
     if pretrained:
         if top_n == 100: 
-            state = torch.hub.load_state_dict_from_url("https://github.com/RF5/danbooru-pretrained/releases/download/v0.1/resnet18-1e.pth", 
+            state = torch.hub.load_state_dict_from_url("https://github.com/RF5/danbooru-pretrained/releases/download/v0.1/resnet18-3F77756F.pth", 
                                                    progress=progress)
             # state = torch.load('weights/resnet18.pth')
             model.load_state_dict(state)
@@ -108,7 +108,7 @@ def resnet34(pretrained=True, progress=True, top_n=500, **kwargs):
     model = _resnet(models.resnet34, top_n, **kwargs)
     if pretrained:
         if top_n == 500: 
-            state = torch.hub.load_state_dict_from_url("https://github.com/RF5/danbooru-pretrained/releases/download/v0.1/resnet34-1e.pth", 
+            state = torch.hub.load_state_dict_from_url("https://github.com/RF5/danbooru-pretrained/releases/download/v0.1/resnet34-88A5E79D.pth", 
                                                    progress=progress)
             # state = torch.load('weights/resnet34.pth')
             model.load_state_dict(state)
@@ -130,7 +130,7 @@ def resnet50(pretrained=True, progress=True, top_n=6000, **kwargs):
     model = _resnet(models.resnet50, top_n, **kwargs)
     if pretrained:
         if top_n == 6000: 
-            state = torch.hub.load_state_dict_from_url("https://github.com/RF5/danbooru-pretrained/releases/download/v0.1/resnet50-1d.pth", 
+            state = torch.hub.load_state_dict_from_url("https://github.com/RF5/danbooru-pretrained/releases/download/v0.1/resnet50-13306192.pth", 
                                                    progress=progress)
             # state = torch.load('weights/resnet50.pth')
             model.load_state_dict(state)
