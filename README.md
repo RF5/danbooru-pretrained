@@ -10,7 +10,7 @@ For a rundown of using these networks, training them, the performance of each ne
 - `training_notebooks/` contains notebooks which I based my training of the networks on. The resnet34 notebook is entirely similar to the resnet18 notebook.
 - `danbooru_resnet.py` contains functions to build and load the various danbooru resnet networks (again see the [blog post](https://rf5.github.io/2019/07/08/danbuuro-pretrained.html) for details)
 
-## Referances
+## References
 1. Thanks a ton for the organizers of the [Danbooru2018 dataset](https://www.gwern.net/Danbooru2018)! Their citation is: 
 > Anonymous, The Danbooru Community, Gwern Branwen, & Aaron Gokaslan; “Danbooru2018: A Large-Scale Crowdsourced and Tagged Anime Illustration Dataset”, 3 January 2019. Web. Accessed 2019-06-24. 
 2. [Deep Residual Learning for Image Recognition](https://arxiv.org/abs/1512.03385)
