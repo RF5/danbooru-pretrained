@@ -5,6 +5,10 @@ This repository contains config info and notebook scripts used to train several 
 
 For a rundown of using these networks, training them, the performance of each network, and other useful information, please [see the accompanying post on this](https://rf5.github.io/2019/07/08/danbuuro-pretrained.html). As in the post, it only takes a few lines of pure pytorch to get started. 
 
+__Requirements__:
+- Pytorch (>1.0)
+- (optional) fastai
+
 ## Files
 - `config/` contains the class names for the various number of top tags that the network predicts. For example, the resnet50's 5th output is the (unnormalized) probability of the image containing the 5th tag name in `class_names_6000.csv`.
 - `training_notebooks/` contains notebooks which I based my training of the networks on. The resnet34 notebook is entirely similar to the resnet18 notebook.
